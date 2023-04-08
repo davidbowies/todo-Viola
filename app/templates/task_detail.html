@@ -12,7 +12,9 @@
     {% else %}
       <p>Incomplete</p>
     {% endif %}
-    <p>Category: {{ task.category.name }}</p>
+    {% if task.category %}
+      <p>Category: {{ task.category.name }}</p>
+    {% endif %}
     {% if task %}
         {% if task.has_prev %}
             <a href="{{ url_for('todo.task_list', page=tasks.prev_num) }}">Previous</a>

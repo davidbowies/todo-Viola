@@ -26,3 +26,9 @@ def register_extensions(app: Flask):
     migrate.init_app(app, db, compare_type=True)
 
 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+db.init_app(app)
+
+
+
