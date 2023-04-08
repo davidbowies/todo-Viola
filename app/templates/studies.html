@@ -1,0 +1,48 @@
+{% extends 'base.html'%}
+
+{% block head %}
+   {{ super() }}
+{% endblock %}
+
+{%block title%}Viola's private To Do-List{%endblock%}
+
+{%block body%}
+    <h1>How are your studies going? Tell me!</h1>
+    <h3>What kind of tasks are you going to do?</h3>
+    <div class="container">
+        <section class="icons position-top flow-vertical">
+            <ul>
+                <li class="studies-deadlines">
+                    <img src="../static/icons/icons8-deadline.svg" alt="">
+                    <ul>
+                        <li>
+                            <a href="#">assignments/deadlines</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="icons position-top flow-vertical">
+            <ul>
+                <li class="studies-files">
+                    <img src="../static/icons/icons8-resume-website.svg" alt="">
+                    <ul>
+                        <li><a href="#">resources/files</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="icons position-top flow-vertical">
+            <ul>
+                <li class="studies-documentation">
+                    <img src="../static/icons/icons8-business-documentation.svg" alt="">
+                    <ul>
+                        <li><a href="#">documentation</a></li>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <a href="{{ url_for('simple_pages.index') }}" class="button">main page</a>
+  
+
+{%endblock%}

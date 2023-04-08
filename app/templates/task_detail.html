@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ task.title }}</title>
+  </head>
+  <body>
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Due: {{ task.whendue }}</p>
+    {% if task.completed %}
+      <p>Completed</p>
+    {% else %}
+      <p>Incomplete</p>
+    {% endif %}
+    <p>Category: {{ task.category.name }}</p>
+    {% if task %}
+        {% if task.has_prev %}
+            <a href="{{ url_for('todo.task_list', page=tasks.prev_num) }}">Previous</a>
+        {% endif %}
+    {% endif %}
+     
+    {% if task and task.has_next %}
+        <a href="{{ url_for('todo.task_list', page=tasks.next_num) }}">Next</a>
+    {% endif %}
+  </body>
+</html>

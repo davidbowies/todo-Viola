@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+
+{%block body%}
+  <h1>Let's tackle our tasks</h1>
+  <h2 class="heading">Overview tasks</h2>
+  <div class="div1">
+  </div>
+  <h2 class="heading">to do</h2>
+  <div class="div2">
+    <section class="icons position-top flow-vertical">
+      <ul>
+        <li class="todo-topics">
+          <img src=" {{ url_for('static', filename='icons/icons8-education.svg') }}" width="62" height="64" loading="lazy" alt="">
+          <ul>
+            <li>
+              <h3><strong>studies</strong></h3>
+            </li>
+            <li>
+              <a href="{{ url_for('simple_pages.studies') }}">How are your studies going? Tell me!</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="icons position-top flow-vertical">
+      <ul>
+        <li class="todo-topics">
+          <img src="{{ url_for('static', filename='icons/icons8-fingerprint-scan.svg') }}" alt="">
+          <ul>
+            <h3>
+              <li><strong>private</strong></li>
+            </h3>
+            <li><a href="{{ url_for('simple_pages.private') }}">What secrets do you want to tell me?I will try to organise your chaos
+                :)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <section class="icons position-top flow-vertical">
+      <ul>
+        <li class="todo-topics">
+          <img src="{{ url_for('static', filename='icons/icons8-select-all.svg') }}" alt="">
+          <ul>
+            <h3>
+              <li><strong>general</strong></li>
+            </h3>
+            <li><a href="{{ url_for('tasks_aka_cookies.general') }}"> Here you can write down everything, so your head doesn't get too
+                crowded</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </div>
+
+
+{%endblock%}
