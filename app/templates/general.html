@@ -1,35 +1,31 @@
 {% extends 'base.html'%}
 
-{%block title%}Viola's private To Do-List{%endblock%}
+{% block title %}Viola's private To Do-List{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
 
 {% block body %}
-<!DOCTYPE html>
-<html>
-
-<head>
-  <title>All Tasks</title>
-</head>
-<h3>New Task</h3>
-<form action="" method="post">
-  <label for="title">Title:</label>
-  <input type="text" name="title" id="title" required>
-  <br>
-  <label for="description">Description:</label>
-  <textarea name="description" id="description" required></textarea>
-  <br>
-  <input type="submit" value="Create Task">
-</form>
-
-<body>
   <h1>All Tasks</h1>
+  <a href="{{ url_for('tasks_aka_cookies.new_task') }}" class="button" style="margin-bottom:10px;">New Task</a>
   <ul class="task.id">
     {% for task in tasks %}
-    <li><a href="/task/{{ task.id }}">{{ task.title }}</a></li>
+      <li>
+        <a href="/task/{{ task.id }}">{{ task.title }}</a>
+        <div class="form-group">
+          <form action="/task/{{ task.id }}/edit" method="get">
+            <button>Edit</button>
+          </form>
+        </div>
+        <div class="form-group">
+          <form action="/task/{{ task.id }}/delete" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete</button>
+          </form>
+        </div>
+      </li>
     {% endfor %}
   </ul>
-  </div>
-  <a href="{{ url_for('simple_pages.index') }}" class="button">main page</a>
-</body>
-
-</html>
+  <a href="{{ url_for('simple_pages.index') }}" class="button">Main Page</a>
 {% endblock %}

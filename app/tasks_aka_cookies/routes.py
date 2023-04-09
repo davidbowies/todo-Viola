@@ -22,10 +22,10 @@ def create_tables():
 # def index():
 #     return redirect(url_for('tasks'))
 
-@blueprint.route('/tasks')
-def tasks():
-    tasks = Task.query.all()
-    return render_template('tasks.html', tasks=tasks)
+# @blueprint.route('/tasks')
+# def tasks():
+#     tasks = Task.query.all()
+#     return render_template('tasks.html', tasks=tasks)
 
 @blueprint.route('/tasks/new', methods=['GET', 'POST'])
 def new_task():
@@ -41,13 +41,15 @@ def new_task():
             task.category.append(category)
         db.session.add(task)
         db.session.commit()
-        return redirect(url_for('tasks'))
+        return redirect(url_for('tasks_aka_cookies.tasks'))
     categories = Category.query.all()
-    return render_template('new_task.html', categories=categories)
+    # redirecvt to tastk/id/edit
+    return render_template('tasks_aka_cookies/new_task.html', categories=categories)
 
-@blueprint.route('/tasks/<int:id>/edit', methods=['GET', 'POST'])
+@blueprint.route('/task/<int:id>/edit', methods=['GET', 'POST'])
 def edit_task(id):
     task = Task.query.get(id)
+    categories = Category.query.all()
     if request.method == 'POST':
         task.title = request.form['title']
         task.description = request.form['description']
@@ -59,8 +61,7 @@ def edit_task(id):
             category = Category.query.get(category_id)
             task.category.append(category)
         db.session.commit()
-        return redirect(url_for('tasks'))
-    categories = Category.query.all()
+        # return redirect(url_for('tasks_aka_cookies.new_task'))
     return render_template('edit_task.html', task=task, categories=categories)
 
 @blueprint.route('/tasks/<int:id>/delete', methods=['DELETE'])
@@ -70,7 +71,13 @@ def delete_task(id):
         return jsonify({'error': 'Task not found'}), 404
     db.session.delete(task)
     db.session.commit()
-    return jsonify({'success': 'Task successfully deleted'}), 200
+    return redirect(url_for('tasks_aka_cookies.tasks'))
+
+@blueprint.route('/tasks/list')
+def get_list():
+    tasks = Task.query.all()
+    return render_template('task_detail.html', tasks=tasks)
+
 
 
 

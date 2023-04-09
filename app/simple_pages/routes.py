@@ -17,6 +17,14 @@ def studies():
 def private():
     return render_template('private.html')
 
+# @blueprint.route('/edit')
+# def edit():
+#     return render_template('edit_task.html')
+
+# @blueprint.route('/new')
+# def new():
+#     return render_template('new_task.html')
+
 
 @blueprint.route('/user/<username>')
 def user_profile(username):

@@ -15,14 +15,21 @@
     {% if task.category %}
       <p>Category: {{ task.category.name }}</p>
     {% endif %}
+    <div>
+      <a href="{{ url_for('tasks_aka_cookies.edit_task', id=task.id) }}">Edit</a>
+      <form action="{{ url_for('tasks_aka_cookies.delete_task', id=task.id) }}" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
     {% if task %}
         {% if task.has_prev %}
-            <a href="{{ url_for('todo.task_list', page=tasks.prev_num) }}">Previous</a>
+            <a href="{{ url_for('action.task_list', page=tasks.prev_num) }}">Previous</a>
         {% endif %}
     {% endif %}
      
     {% if task and task.has_next %}
-        <a href="{{ url_for('todo.task_list', page=tasks.next_num) }}">Next</a>
+        <a href="{{ url_for('action.task_list', page=tasks.next_num) }}">Next</a>
     {% endif %}
   </body>
 </html>

@@ -21,5 +21,3 @@ if __name__ == '__main__':
     db.session.add(new_task)
 
   db.session.commit()
-
- 
