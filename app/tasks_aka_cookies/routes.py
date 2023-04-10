@@ -41,7 +41,7 @@ def new_task():
             task.category.append(category)
         db.session.add(task)
         db.session.commit()
-        return redirect(url_for('tasks_aka_cookies.tasks'))
+        return render_template('tasks_aka_cookies/new_task.html', categories=categories)
     categories = Category.query.all()
     # redirecvt to tastk/id/edit
     return render_template('tasks_aka_cookies/new_task.html', categories=categories)
