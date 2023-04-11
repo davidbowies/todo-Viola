@@ -41,10 +41,10 @@ def new_task():
             task.category.append(category)
         db.session.add(task)
         db.session.commit()
-        return render_template('general.html', categories=categories)
+        return render_template('tasks_aka_cookies/new_task.html', categories=categories)
     categories = Category.query.all()
     # redirecvt to tastk/id/edit
-    return render_template('general.html', categories=categories)
+    return render_template('tasks_aka_cookies/new_task.html', categories=categories)
 
 @blueprint.route('/task/<int:id>/edit', methods=['GET', 'POST'])
 def edit_task(id):
@@ -71,7 +71,7 @@ def delete_task(id):
         return jsonify({'error': 'Task not found'}), 404
     db.session.delete(task)
     db.session.commit()
-    return redirect(url_for('tasks_aka_cookies.tasks'))
+    return redirect(url_for('tasks_aka_cookies.delete_task'))
 
 @blueprint.route('/tasks/list')
 def get_list():
