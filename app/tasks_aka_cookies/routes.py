@@ -44,7 +44,7 @@ def new_task():
         return render_template('tasks_aka_cookies/new_task.html', categories=categories)
     categories = Category.query.all()
     # redirecvt to tastk/id/edit
-    return render_template('tasks_aka_cookies/new_task.html', categories=categories)
+    return render_template('general.html', categories=categories)
 
 @blueprint.route('/task/<int:id>/edit', methods=['GET', 'POST'])
 def edit_task(id):
