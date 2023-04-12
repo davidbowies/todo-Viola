@@ -77,6 +77,7 @@ def delete_task(id):
         return render_template('tasks_aka_cookies/delete_task.html', task=task)
 
 
+
 @blueprint.route('/tasks/list')
 def get_list():
     tasks = Task.query.all()
