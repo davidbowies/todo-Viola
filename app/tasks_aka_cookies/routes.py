@@ -64,14 +64,18 @@ def edit_task(id):
         # return redirect(url_for('tasks_aka_cookies.new_task'))
     return render_template('edit_task.html', task=task, categories=categories)
 
-@blueprint.route('/tasks/<int:id>/delete', methods=['DELETE'])
+@blueprint.route('/tasks/<int:id>/delete', methods=['DELETE', 'POST'])
 def delete_task(id):
     task = Task.query.get(id)
     if not task:
         return jsonify({'error': 'Task not found'}), 404
     db.session.delete(task)
     db.session.commit()
-    return redirect(url_for('tasks_aka_cookies.delete_task'))
+    if request.method == 'DELETE':
+        return redirect(url_for('tasks_aka_cookies.general'))
+    else:
+        return render_template('tasks_aka_cookies/delete_task.html', task=task)
+
 
 @blueprint.route('/tasks/list')
 def get_list():
