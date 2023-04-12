@@ -72,9 +72,9 @@ def delete_task(id):
     db.session.delete(task)
     db.session.commit()
     if request.method == 'DELETE':
-        return render_template('general.html', tasks=new_task)
-    else:
         return render_template('delete_task.html', task=task)
+    else:
+        return render_template('general.html', task=task)
 
 
 
