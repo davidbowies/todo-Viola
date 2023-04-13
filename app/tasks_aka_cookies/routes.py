@@ -72,9 +72,10 @@ def delete_task(id):
     db.session.delete(task)
     db.session.commit()
     if request.method == 'DELETE':
-        return redirect(url_for('tasks_aka_cookies.general'))
+        return jsonify({'message': 'Task deleted'})
     else:
-        return render_template('delete_task.html', task=task)
+        return render_template('tasks_aka_cookies/delete_task.html', task=task)
+
 
 
 
