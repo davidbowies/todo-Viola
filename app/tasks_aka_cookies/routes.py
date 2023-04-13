@@ -74,7 +74,7 @@ def delete_task(id):
     if request.method == 'DELETE':
         return jsonify({'message': 'Task deleted'})
     else:
-        return render_template('tasks_aka_cookies/delete_task.html', task=task)
+        return render_template('delete_task.html', task=task)
 
 
 
