@@ -71,7 +71,7 @@ def delete_task(id):
         return jsonify({'error': 'Task not found'}), 404
     db.session.delete(task)
     db.session.commit()
-    if request.method == 'DELETE':
+    if request.method == 'POST':
         return jsonify({'message': 'Task deleted'})
     else:
         return render_template('delete_task.html', task=task)
