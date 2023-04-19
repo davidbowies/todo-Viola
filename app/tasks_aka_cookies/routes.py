@@ -41,7 +41,7 @@ def new_task():
             task.category.append(category)
         db.session.add(task)
         db.session.commit()
-        return render_template('tasks_aka_cookies/new_task.html', categories=categories)
+        return redirect('/general') #render_template('tasks_aka_cookies/new_task.html', categories=categories)
     categories = Category.query.all()
     # redirecvt to tastk/id/edit
     return render_template('tasks_aka_cookies/new_task.html', categories=categories)
@@ -61,6 +61,7 @@ def edit_task(id):
             category = Category.query.get(category_id)
             task.category.append(category)
         db.session.commit()
+        return redirect('/general')
         # return redirect(url_for('tasks_aka_cookies.new_task'))
     return render_template('edit_task.html', task=task, categories=categories)
 
@@ -71,10 +72,10 @@ def delete_task(id):
         return jsonify({'error': 'Task not found'}), 404
     db.session.delete(task)
     db.session.commit()
-    if request.method == 'POST':
-        return jsonify({'message': 'Task deleted'})
-    else:
-        return render_template('delete_task.html', task=task)
+    # if request.method == 'POST':
+    #     return jsonify({'message': 'Task deleted'})
+    # else:
+    return render_template('delete_task.html', task=task)
 
 
 

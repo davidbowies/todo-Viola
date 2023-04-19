@@ -1,27 +1,48 @@
 {% extends 'base.html' %}
 
 {% block body %}
-  <h1>New Task</h1>
-  <form method="post" action="{{ url_for('tasks_aka_cookies.new_task') }}">
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
-    <br>
+<h1>New Task</h1>
+<form method="post" action="{{ url_for('tasks_aka_cookies.new_task') }}">
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title" required>
+  <br>
+  <div class="description">
     <label for="description">Description:</label>
     <textarea id="description" name="description" rows="5" required></textarea>
-    <br>
-    <label for="whendue">Due Date:</label>
-    <input type="date" id="whendue" name="whendue">
-    <br>
-    <label for="completed">Completed:</label>
-    <input type="checkbox" id="completed" name="completed">
-    <br>
-    <label for="categories">Categories:</label>
-    {% for category in categories %}
-      <input type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}">
-      <label for="category_{{ category.id }}">{{ category.name }}</label>
-      <br>
-    {% endfor %}
-    <br>
-    <button type="submit">Create</button>
-  </form>
+  </div>
+  <br>
+  <label for="char_count">Character Count:</label>
+  <span id="char_count">0</span> / 100
+  <br>
+  <label for="whendue">Due Date:</label>
+  <input type="date" id="whendue" name="whendue">
+  <br>
+  <label for="completed">Completed:</label>
+  <input type="checkbox" id="completed" name="completed">
+  <br>
+  <label for="categories">Categories:</label>
+  {% for category in categories %}
+  <input type="checkbox" id="category_{{ category.id }}" name="categories" value="{{ category.id }}">
+  <label for="category_{{ category.id }}">{{ category.name }}</label>
+  <br>
+  {% endfor %}
+  <br>
+  <button type="submit">Create</button>
+</form>
+
+<script>
+  var description = document.getElementById("description");
+  var char_count = document.getElementById("char_count");
+  
+  description.addEventListener("keyup", function(){
+    var length = description.value.length;
+    char_count.innerText = length;
+    if (length > 100){
+      description.value = description.value.substring(0, 100);
+      char_count.innerText = 100; 
+    }
+  });
+  
+  </script>
+
 {% endblock %}
