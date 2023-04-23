@@ -248,37 +248,3 @@ ul[class="task.id"] li a:hover:after {
   word-wrap: break-word;
 }
 
-
-/* for mobile phones */
-
-#div1 {
-  width: 100%;
-  max-width: none;
-}
-
-.div2 {
-  width: 100%;
-  max-width: none;
-}
-
-#div1 {
-  grid-template-columns: 1fr;
-}
-
-.div2, .container {
-  grid-template-columns: 1fr;
-}
-
-.button {
-  padding: 10px 20px;
-  font-size: 14px;
-  margin: 10px auto;
-  max-width: 200px;
-}
-
-@media (max-width: 480px) {
-  h1, h2, h3 {
-    padding: 10px;
-    font-size: 24px;
-  }
-}
