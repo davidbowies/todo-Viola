@@ -248,17 +248,3 @@ ul[class="task.id"] li a:hover:after {
   word-wrap: break-word;
 }
 
-/* Styles for screens with a maximum width of 767px (mobile phones) */
-@media only screen and (max-width: 767px) {
-  /* Use a class instead of an attribute selector for better performance */
-  .task-list {
-    width: 90%; /* Use percentage-based value instead of fixed pixel value */
-    margin: 0 auto;
-  }
-  
-  .task-list li {
-    padding: 1em;
-    margin-bottom: 1em; /* Increase margin bottom for better spacing */
-    border-radius: 10px;
-  }
-}
