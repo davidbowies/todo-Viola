@@ -1,11 +1,13 @@
 from flask import Blueprint, render_template
+from app.tasks_aka_cookies.models import Task
 
 blueprint = Blueprint('simple_pages', __name__)
 
 
 @blueprint.route('/')
 def index():
-    return render_template('tasks/index.html')
+    tasks = Task.query.all()
+    return render_template('tasks/index.html', tasks=tasks)
 
 
 @blueprint.route('/studies')
@@ -13,17 +15,10 @@ def studies():
      return render_template('studies.html')
 
 
-@blueprint.route('/private')
+@blueprint.route("/private")
 def private():
-    return render_template('private.html')
-
-# @blueprint.route('/edit')
-# def edit():
-#     return render_template('edit_task.html')
-
-# @blueprint.route('/new')
-# def new():
-#     return render_template('new_task.html')
+    tasks = Task.query.all()
+    return render_template('private.html', tasks=tasks)
 
 
 @blueprint.route('/user/<username>')

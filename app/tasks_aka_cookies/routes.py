@@ -8,10 +8,11 @@ from datetime import datetime
 
 blueprint = Blueprint('tasks_aka_cookies', __name__)
 
+
 @blueprint.route("/general")
 def general():
-     new_task = Task.query.all()
-     return render_template('general.html', tasks=new_task)
+    new_task = Task.query.all()
+    return render_template('general.html', tasks=new_task)
 
 
 @blueprint.before_app_first_request
@@ -27,24 +28,29 @@ def create_tables():
 #     tasks = Task.query.all()
 #     return render_template('tasks.html', tasks=tasks)
 
+
 @blueprint.route('/tasks/new', methods=['GET', 'POST'])
 def new_task():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        whendue = datetime.strptime(request.form['whendue'], '%Y-%m-%d') if request.form['whendue'] else None
+        whendue = datetime.strptime(
+            request.form['whendue'], '%Y-%m-%d') if request.form['whendue'] else None
         completed = request.form.get('completed') == 'on'
         categories = request.form.getlist('categories')
-        task = Task(title=title, description=description, whendue=whendue, completed=completed)
+        task = Task(title=title, description=description,
+                    whendue=whendue, completed=completed)
         for category_id in categories:
             category = Category.query.get(category_id)
             task.category.append(category)
         db.session.add(task)
         db.session.commit()
-        return redirect('/general') #render_template('tasks_aka_cookies/new_task.html', categories=categories)
+        # render_template('tasks_aka_cookies/new_task.html', categories=categories)
+        return redirect('/general')
     categories = Category.query.all()
     # redirecvt to tastk/id/edit
     return render_template('tasks_aka_cookies/new_task.html', categories=categories)
+
 
 @blueprint.route('/task/<int:id>/edit', methods=['GET', 'POST'])
 def edit_task(id):
@@ -53,7 +59,8 @@ def edit_task(id):
     if request.method == 'POST':
         task.title = request.form['title']
         task.description = request.form['description']
-        task.whendue = datetime.strptime(request.form['whendue'], '%Y-%m-%d') if request.form['whendue'] else None
+        task.whendue = datetime.strptime(
+            request.form['whendue'], '%Y-%m-%d') if request.form['whendue'] else None
         task.completed = bool(request.form.get('completed'))
         task.category = []
         categories = request.form.getlist('categories')
@@ -65,6 +72,7 @@ def edit_task(id):
         # return redirect(url_for('tasks_aka_cookies.new_task'))
     return render_template('edit_task.html', task=task, categories=categories)
 
+
 @blueprint.route('/tasks/<int:id>/delete', methods=['DELETE', 'POST'])
 def delete_task(id):
     task = Task.query.get(id)
@@ -75,21 +83,15 @@ def delete_task(id):
     # if request.method == 'POST':
     #     return jsonify({'message': 'Task deleted'})
     # else:
-    return render_template('delete_task.html', task=task)
-
-
+    return redirect(url_for('tasks_aka_cookies.general'))
+    # return redirect('/general')
+    # return render_template('delete_task.html', task=task)
 
 
 @blueprint.route('/tasks/list')
 def get_list():
     tasks = Task.query.all()
     return render_template('task_detail.html', tasks=tasks)
-
-
-
-
-
-
 
 
 # @blueprint.route('/tasks/<slug>')
@@ -104,13 +106,6 @@ def get_list():
 #      return render_template('tasks/index.html', tasks_pagination=tasks_pagination)
 
 
-
-
-
-
-
-
-
 # @blueprint.route('/tasks')
 # def task_list():
 #      page = request.args.get('page', 1, type=int)
@@ -123,7 +118,3 @@ def get_list():
 # def task_detail(task_id):
 #       task = Task.query.get(task_id)
 #       return render_template('task_detail.html', task=task)
-
-
-
-
