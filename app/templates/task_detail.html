@@ -1,5 +1,12 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html'%}
+
+{% block title %}Viola's private To Do-List{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block body %}
   <head>
     <title>{{ task.title }}</title>
   </head>
@@ -32,4 +39,5 @@
         <a href="{{ url_for('action.task_list', page=tasks.next_num) }}">Next</a>
     {% endif %}
   </body>
-</html>
+
+  {%endblock%} 
