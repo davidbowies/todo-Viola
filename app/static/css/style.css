@@ -248,3 +248,41 @@ ul[class="task.id"] li a:hover:after {
   word-wrap: break-word;
 }
 
+.popup {
+  position: absolute;
+  display: none;
+  z-index: 9999;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  max-width: 500px;
+}
+
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#task-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  z-index: 9999;
+}
+
+#task-popup .title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#task-popup .description {
+  margin-bottom: 10px;
+}
