@@ -22,7 +22,7 @@
     {% if task.category %}
       <p>Category: {{ task.category.name }}</p>
     {% endif %}
-    <div>
+    <div class="edit-button">
       <a href="{{ url_for('tasks_aka_cookies.edit_task', id=task.id) }}">Edit</a>
       <form action="{{ url_for('tasks_aka_cookies.delete_task', id=task.id) }}" method="POST">
         <input type="hidden" name="_method" value="DELETE">

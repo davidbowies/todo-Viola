@@ -3,7 +3,8 @@ body {
   font-family: sans-serif;
 }
 
-h1,h2,
+h1,
+h2,
 h3 {
   text-align: center;
   color: #2c4e73;
@@ -88,7 +89,7 @@ li:hover:after {
 }
 
 .button {
-  background-color:#e4f3ff;
+  background-color: #e4f3ff;
   border: none;
   color: #2c4e73;
   padding: 15px 32px;
@@ -96,13 +97,13 @@ li:hover:after {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 3px solid black;
   border-radius: 20px;
   display: block;
   margin: 0 auto;
   max-width: 100px;
-} 
+}
 
 @media (min-width: 40em) {
   body {
@@ -126,32 +127,33 @@ li:hover:after {
     gap: 20px;
   }
 
-  .div2, .container {
+  .div2,
+  .container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 
-.todo-topics{
+.todo-topics {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.studies-deadlines{
+.studies-deadlines {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.studies-files{
+.studies-files {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 
-.studies-documentation{
+.studies-documentation {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,20 +162,21 @@ li:hover:after {
 form {
   margin: 20px auto;
   max-width: 500px;
-  padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #e4f3ff;
 }
-input[type="text"], textarea {
+
+input[type="text"],
+textarea {
   display: block;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color:#fbfbfb;
+  background-color: #fbfbfb;
 }
+
 input[type="submit"] {
   background-color: #216477;
   color: #f1f1f1;
@@ -182,9 +185,9 @@ input[type="submit"] {
   padding: 10px 20px;
   cursor: pointer;
 }
+
 input[type="submit"]:hover {
-  background-color: #216477
-  ;
+  background-color: #216477;
 }
 
 
@@ -300,3 +303,67 @@ ul[class="task.id"] li a:hover:after {
 }
 
 
+p {
+  color: #000000;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.edit-button {
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+
+  a,
+  button {
+    color: #216477;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #fff;
+    border: 2px solid #15424e;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  }
+
+  a:hover,
+  button:hover {
+    background-color: #216477;
+    color: #fff;
+    border-color: #15424e;
+  }
+
+
+
+
+
+
+
+  .index-page a,
+  .index-page button {
+    color: #216477;
+    text-decoration: none;
+    font-weight: normal;
+    background-color: #fff;
+    border: 2px solid #15424e;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    line-height: 3;
+    cursor: pointer;
+  }
+
+  .index-page a:hover,
+  .index-page button:hover {
+    background-color: #216477;
+    color: #fff;
+    border-color: #15424e;
+  }
