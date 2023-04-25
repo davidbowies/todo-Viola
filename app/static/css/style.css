@@ -164,6 +164,7 @@ form {
   max-width: 500px;
   border-radius: 5px;
   background-color: #e4f3ff;
+  padding: 30px;
 }
 
 input[type="text"],
@@ -277,6 +278,8 @@ ul[class="task.id"] li a:hover:after {
   padding: 10px;
   border-radius: 20px;
   background-color: #e4f3ff;
+  text-align: center;
+  padding-top: 40px;
 }
 
 
@@ -323,6 +326,7 @@ p {
   a,
   button {
     color: #216477;
+    font-size: 16px;
     text-decoration: none;
     font-weight: bold;
     background-color: #fff;
