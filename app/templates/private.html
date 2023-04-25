@@ -3,53 +3,55 @@
 {% block title %}Viola's private To Do-List{% endblock %}
 
 {% block head %}
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      $('ul.task-list li').hover(function() {
-        var taskTitle = $(this).find('.task-title').text();
-        var taskDescription = $(this).find('.task-description').text();
-        $('#task-popup .title').text(taskTitle);
-        $('#task-popup .description').text(taskDescription);
-        $('#task-popup').show();
-      }, function() {
-        $('#task-popup').hide();
-      });
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('ul.task-list li').hover(function () {
+      var taskTitle = $(this).find('.task-title').text();
+      var taskDescription = $(this).find('.task-description').text();
+      $('#task-popup .title').text(taskTitle);
+      $('#task-popup .description').text(taskDescription);
+      $('#task-popup').show();
+    }, function () {
+      $('#task-popup').hide();
     });
-  </script>
+  });
+</script>
 {% endblock %}
 
 
 {% block body %}
-  <h1>All Tasks</h1>
-  <a href="{{ url_for('tasks_aka_cookies.new_task') }}" class="button" style="margin-bottom:10px;">New Task</a>
-  <ul class="task-list">
-    {% for task in tasks %}
-      <li>
-        <div class="task-title">
-          <a href="/task/{{ task.id }}">{{ task.title }}</a>
-        </div>
-        <div class="form-group">
-          <form action="/task/{{ task.id }}/edit" method="get">
-            <button>Edit</button>
-          </form>
-        </div>
-        <div class="form-group">
-          <form action="/tasks/{{ task.id }}/delete" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button>Delete</button>
-          </form>
-        </div>
-        <div class="task-description" style="display: none;">
-          {{ task.description }}
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
-  <a href="{{ url_for('simple_pages.index') }}" class="button">Main Page</a>
-  <div id="task-popup">
-    <div class="title"></div>
-    <div class="description"></div>
-  </div>
+
+<h1>What secrets do you want to tell me?</h1>
+<h3>I will try to organise your chaos :)</h3>
+<a href="{{ url_for('tasks_aka_cookies.new_task') }}" class="button" style="margin-bottom:10px;">New Task</a>
+<ul class="task-list">
+  {% for task in tasks %}
+  <li>
+    <div class="task-title">
+      <a href="/task/{{ task.id }}">{{ task.title }}</a>
+    </div>
+    <div class="form-group">
+      <form action="/task/{{ task.id }}/edit" method="get">
+        <button>Edit</button>
+      </form>
+    </div>
+    <div class="form-group">
+      <form action="/tasks/{{ task.id }}/delete" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+      </form>
+    </div>
+    <div class="task-description" style="display: none;">
+      {{ task.description }}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('simple_pages.index') }}" class="button">Main Page</a>
+<div id="task-popup">
+  <div class="title"></div>
+  <div class="description"></div>
+</div>
 {% endblock %}
