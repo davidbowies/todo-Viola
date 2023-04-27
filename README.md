@@ -1,38 +1,66 @@
-# PRIVATE TO DO LIST 
-**Key features:**
+# To-Do List App
 
-** the project is going to be a private to do list 
-** it is going to include several sections and hopefully in the end an overview ** of all the tasks on the landing page. This will be in overview tasks.
+The To-Do List App is a private to-do list that helps users organize and manage their tasks. The app is built using Python, Flask and SQLite.
 
-** three sections are going to be seen on the first page
-** study section, private section and general section
-** when entering those, especially studies there are going to be more subpages
-** the private section and the general section need to be properly designed
+## Key Features
 
-<!-- **Routing**
-** using flask **
-**get this page going with python app.py ** 
-** dynamic routes ** -->
+The To-Do List App includes the following features:
 
-**Data Models**
+- Overview Tasks: Provides an overview of all the tasks on the landing page.
+- On the landing page: subpages called studies, private and general.
+- The studies page has more subpages which are currently not working.
+- Private page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task.
+- General page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task.
 
-**Task Model**
-**    title: the title of the task (string)
-**    description: a description of the task (string)
-**    completed: a boolean value indicating whether the task has been completed (boolean)
+## Data Models
 
-**Category Model**
-**   id:
-**   name: 
+### Task Model
 
+The Task model represents a task that needs to be completed. It has the following properties:
 
+- `id`: The unique ID of the task (integer).
+- `title`: The title of the task (string).
+- `description`: A description of the task (text).
+- `whendue`: The due date of the task (datetime).
+- `completed`: A boolean value indicating whether the task has been completed (boolean).
+- `categories`: A list of categories associated with the task (relationship).
 
-**Teck Stack**
-** flask
-** sqlite
+### Category Model
 
+The Category model represents a category that can be associated with tasks. It has the following properties:
 
-**Installation**
-** 1. clone this repository to your local machine
-** 2. have your virtual environment running
-** 3. access the application with python run.py
+- `id`: The unique ID of the category (integer).
+- `name`: The name of the category (string).
+
+### Task Categories Model
+
+The TaskCategories model represents the many-to-many relationship between tasks and categories. It has the following properties:
+
+- `task_id`: The ID of the task (integer).
+- `category_id`: The ID of the category (integer).
+
+### Tag Model
+
+The Tag model represents a tag that can be associated with tasks. It has the following properties:
+
+- `id`: The unique ID of the tag (integer).
+- `name`: The name of the tag (string).
+
+### Task Tags Model
+
+The TaskTags model represents the many-to-many relationship between tasks and tags. It has the following properties:
+
+- `task_id`: The ID of the task (integer).
+- `tag_id`: The ID of the tag (integer).
+
+## Tech Stack
+
+The To-Do List App is built using Python, Flask, and SQLite.
+
+## Installation
+
+To run the app, follow these steps:
+
+1. Clone this repository to your local machine: `git clone https://github.com/davidbowies/todo-Viola.git`.
+2. Make sure your virtual environment is running.
+3. Access the application locally with `gunicorn run:app`.
