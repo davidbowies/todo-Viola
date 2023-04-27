@@ -62,5 +62,8 @@ The To-Do List App is built using Python, Flask, and SQLite and a little bit of 
 To run the app, follow these steps:
 
 1. Clone this repository to your local machine: `git clone https://github.com/davidbowies/todo-Viola.git`.
-2. Make sure your virtual environment is running.
-3. Access the application locally with `gunicorn run:app`.
+2. Create a virtual environment: `python3 -m venv venv`.
+3. Activate the virtual environment: `source venv/bin/activate`.
+4. Install the required packages: `pip install flask`.
+5. Run the app: `gunicorn run:app`.
+6. When you're done using the app, deactivate the virtual environment: `deactivate`.
