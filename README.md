@@ -9,8 +9,8 @@ The To-Do List App includes the following features:
 - Overview Tasks: Provides an overview of all the tasks on the landing page.
 - On the landing page: subpages called studies, private and general.
 - The studies page has more subpages which are currently not working.
-- Private page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task.
-- General page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task.
+- Private page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task. While writing in the textarea the typing us being counted with Javascript.
+- General page: you can create, update, delete a task. While you hover over a task you even have a short overview of the task created. You can also click on the created task. While writing in the textarea the typing us being counted with Javascript.
 
 ## Data Models
 
