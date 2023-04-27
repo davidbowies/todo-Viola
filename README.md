@@ -55,7 +55,7 @@ The TaskTags model represents the many-to-many relationship between tasks and ta
 
 ## Tech Stack
 
-The To-Do List App is built using Python, Flask, and SQLite.
+The To-Do List App is built using Python, Flask, and SQLite and a little bit of JavaScript as well.
 
 ## Installation
 
